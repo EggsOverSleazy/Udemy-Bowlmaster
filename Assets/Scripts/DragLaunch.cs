@@ -29,7 +29,8 @@ public class DragLaunch : MonoBehaviour {
         dragEndTime = Time.time;
 
         float dragDuration = dragEndTime - dragStartTime;
-        float launchSpeedX = (dragEndPosition.x - dragStartPosition.x) / dragDuration;
+        // Physics Formula.  Velocity = Displacement / Time Taken 
+	float launchSpeedX = (dragEndPosition.x - dragStartPosition.x) / dragDuration;
         float launchSpeedZ = (dragEndPosition.y - dragStartPosition.y) / dragDuration;
         //Y on the touch interface = Z in the world
 
