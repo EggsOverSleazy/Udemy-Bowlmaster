@@ -5,12 +5,13 @@ public class Ball : MonoBehaviour {
 
     public Vector3 launchVelocity = new Vector3 (0,0,300f);
     public GameObject pins;
+    public bool inPlay = false;
+
 
     void Start()
     {
         GetComponent<Rigidbody>().useGravity = false;
     }
-
     // Update is called once per frame
     void Update ()
     {
@@ -43,6 +44,7 @@ public class Ball : MonoBehaviour {
 
     public void Launch(Vector3 velocity)
     {
+        inPlay = true;
         GetComponent<Rigidbody>().useGravity = true;
         gameObject.GetComponent<Rigidbody>().velocity = velocity;
     }

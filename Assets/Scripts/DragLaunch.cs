@@ -10,6 +10,7 @@ public class DragLaunch : MonoBehaviour {
     private Vector3 dragStartPosition, dragEndPosition;
     private float dragStartTime, dragEndTime;
 
+
     void Start()
     {
         ball = GetComponent<Ball>();
@@ -30,7 +31,7 @@ public class DragLaunch : MonoBehaviour {
 
         float dragDuration = dragEndTime - dragStartTime;
         // Physics Formula.  Velocity = Displacement / Time Taken 
-	float launchSpeedX = (dragEndPosition.x - dragStartPosition.x) / dragDuration;
+	    float launchSpeedX = (dragEndPosition.x - dragStartPosition.x) / dragDuration;
         float launchSpeedZ = (dragEndPosition.y - dragStartPosition.y) / dragDuration;
         //Y on the touch interface = Z in the world
 
@@ -38,7 +39,14 @@ public class DragLaunch : MonoBehaviour {
         //Vector3 launchVelocity = new Vector3(launchSpeedX, 0, launchSpeedZ);
         ball.Launch(new Vector3(launchSpeedX, 0, launchSpeedZ));
 
+    }
 
+    public void MoveStart(float amount)
+    {
+        if(ball.inPlay == false)
+        {
+            ball.transform.Translate(new Vector3(amount, 0, 0));
+        }
     }
 
 
