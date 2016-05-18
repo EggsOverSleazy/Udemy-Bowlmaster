@@ -33,13 +33,7 @@ public class Ball : MonoBehaviour {
         {
             gameObject.transform.position = new Vector3(1, 20, 30);
             gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-
-            //Destroy(GameObject.Find("Pins"));
         }
-
-        
-        //Instantiate(pins, new Vector3(0, 0, 1829), Quaternion.identity);
-      
     }
 
     public void Launch(Vector3 velocity)
