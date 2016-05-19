@@ -43,6 +43,9 @@ public class Ball : MonoBehaviour {
     {
         GetComponent<Rigidbody>().useGravity = true;
         gameObject.GetComponent<Rigidbody>().velocity = velocity;
+		if (velocity.x > 100f) {
+			throw new UnityException ("Expected velocity exceeded by object" + name);
+		}
     }
 
     private void OnCollisionEnter()
