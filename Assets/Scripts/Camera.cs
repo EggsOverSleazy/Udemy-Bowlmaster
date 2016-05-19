@@ -14,9 +14,14 @@ public class Camera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(gameObject.transform.position.z <= 1829f-200f)
+        if(ball.transform.position.z <= 1829f-200f)
         {
-            gameObject.transform.position = ball.transform.position + offset;
+            SetCamera();
         }
 	}
+
+    public void SetCamera()
+    {
+        gameObject.transform.position = ball.transform.position + offset;
+    }
 }

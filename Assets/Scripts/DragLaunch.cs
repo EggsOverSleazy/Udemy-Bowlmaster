@@ -2,9 +2,10 @@
 using System.Collections;
 
 //add Ball script if it wasn't already on this component.  
-[RequireComponent (typeof(Ball))] 
+[RequireComponent(typeof(Ball))]
 
-public class DragLaunch : MonoBehaviour {
+public class DragLaunch : MonoBehaviour
+{
 
     private Ball ball;
     private Vector3 dragStartPosition, dragEndPosition;
@@ -14,6 +15,14 @@ public class DragLaunch : MonoBehaviour {
     void Start()
     {
         ball = GetComponent<Ball>();
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ball.Launch(new Vector3(0, 0, 1500f));
+        }
     }
 
     public void DragStart()
@@ -31,7 +40,7 @@ public class DragLaunch : MonoBehaviour {
 
         float dragDuration = dragEndTime - dragStartTime;
         // Physics Formula.  Velocity = Displacement / Time Taken 
-	    float launchSpeedX = (dragEndPosition.x - dragStartPosition.x) / dragDuration;
+        float launchSpeedX = (dragEndPosition.x - dragStartPosition.x) / dragDuration;
         float launchSpeedZ = (dragEndPosition.y - dragStartPosition.y) / dragDuration;
         //Y on the touch interface = Z in the world
 
@@ -43,7 +52,7 @@ public class DragLaunch : MonoBehaviour {
 
     public void MoveStart(float amount)
     {
-        if(ball.inPlay == false)
+        if (ball.inPlay == false)
         {
             ball.transform.Translate(new Vector3(amount, 0, 0));
         }

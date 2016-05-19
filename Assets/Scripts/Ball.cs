@@ -6,17 +6,19 @@ public class Ball : MonoBehaviour {
     public Vector3 launchVelocity = new Vector3 (0,0,300f);
     public GameObject pins;
     public bool inPlay = false;
-
+    private Vector3 ballStartPosition;
+    private Vector3 stillVelocity = new Vector3(0, 0, 0);
 
     void Start()
     {
-        GetComponent<Rigidbody>().useGravity = false;
+        ballStartPosition = gameObject.transform.position;
     }
+
     // Update is called once per frame
     void Update ()
     {
-        Reset();
         StopSoundOnStill();
+        if (Input.GetKeyDown(KeyCode.Backspace)) { Reset(); }
     }
 
     private void StopSoundOnStill()
@@ -27,18 +29,18 @@ public class Ball : MonoBehaviour {
         }
     }
 
-    private void Reset()
+    public void Reset()
     {
-        if (Input.GetKeyDown(KeyCode.Backspace))
-        {
-            gameObject.transform.position = new Vector3(1, 20, 30);
-            gameObject.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
-        }
+        inPlay = false;
+        gameObject.GetComponent<Rigidbody>().velocity = stillVelocity;
+        gameObject.GetComponent<Rigidbody>().angularVelocity = stillVelocity;
+        GetComponent<Rigidbody>().useGravity = false;
+        gameObject.transform.position = ballStartPosition;
+
     }
 
     public void Launch(Vector3 velocity)
     {
-        inPlay = true;
         GetComponent<Rigidbody>().useGravity = true;
         gameObject.GetComponent<Rigidbody>().velocity = velocity;
     }
