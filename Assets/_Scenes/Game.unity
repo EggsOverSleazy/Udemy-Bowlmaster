@@ -536,6 +536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distToRaise: 40
 --- !u!54 &351866630
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -641,7 +642,7 @@ Transform:
   m_GameObject: {fileID: 690503062}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 60, z: 1854.7}
-  m_LocalScale: {x: 120, y: 120, z: 300}
+  m_LocalScale: {x: 120, y: 120, z: 310}
   m_Children:
   - {fileID: 953232831}
   m_Father: {fileID: 0}
@@ -658,8 +659,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cb4848c1df58714ea89eea1d8368227, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  standingDisplay: {fileID: 1609225104}
   lastStandingCount: -1
+  standingDisplay: {fileID: 1609225104}
 --- !u!65 &690503065
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -931,6 +932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distToRaise: 40
 --- !u!54 &730847215
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1134,6 +1136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distToRaise: 40
 --- !u!54 &817703200
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1263,6 +1266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distToRaise: 40
 --- !u!54 &878436373
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1652,6 +1656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distToRaise: 40
 --- !u!54 &1092401958
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1897,6 +1902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distToRaise: 40
 --- !u!54 &1288155894
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2026,6 +2032,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distToRaise: 40
 --- !u!54 &1290343624
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2424,6 +2431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distToRaise: 40
 --- !u!54 &1514919236
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2489,6 +2497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distToRaise: 40
 --- !u!54 &1544314425
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2580,7 +2589,7 @@ GameObject:
   - 222: {fileID: 1609225105}
   - 114: {fileID: 1609225104}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3033,6 +3042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   standingThreshold: 3
+  distToRaise: 40
 --- !u!54 &1753845395
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -4,9 +4,12 @@ using System.Collections;
 public class Pin : MonoBehaviour {
 
     public float standingThreshold = 3f;
+    public float distToRaise = 40f;
 
+    private Rigidbody rigidBody;
     // Use this for initialization
-    void Start () {	
+    void Start () {
+        rigidBody = gameObject.GetComponent<Rigidbody>();
 	}
 	
 	// Update is called once per frame
@@ -37,4 +40,23 @@ public class Pin : MonoBehaviour {
         }
     }
 
+    public void Raise(Pin pin)
+    {
+        if (pin.IsStanding())
+        {
+            Debug.Log("Identified pin to raise");
+            pin.transform.Translate(new Vector3(0, distToRaise, 0), Space.World);
+            pin.GetComponent<Rigidbody>().useGravity = false;
+            pin.GetComponent<Rigidbody>().angularVelocity = new Vector3(0, 0, 0);
+            pin.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+
+        }
+    }
+
+    public void Lower(Pin pin)
+    {
+        Debug.Log("Identified pin to lower");
+        pin.GetComponent<Rigidbody>().useGravity = true;
+        pin.transform.Translate(new Vector3(0, distToRaise * -1, 0), Space.World);
+    }
 }

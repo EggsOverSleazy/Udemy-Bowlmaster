@@ -6,7 +6,7 @@ public class PinSetter : MonoBehaviour {
 
     public int lastStandingCount = -1;  // means nothing has fallen over yet
     public Text standingDisplay;
-    public float distanceToRaise = 40f;
+
     
     private Ball ball;
 
@@ -97,21 +97,21 @@ public class PinSetter : MonoBehaviour {
 
     public void RaisePins()
     {
-        Debug.Log("Raise  Pins");
-
+        Debug.Log("Raise Pins");
         foreach (Pin pin in GameObject.FindObjectsOfType<Pin>())
         {
-            if (pin.IsStanding())
-            {
-                Debug.Log("Identified pin to raise");
-                pin.transform.Translate(new Vector3(0, 0, distanceToRaise));
-            }
+            //pin.GetComponent<Rigidbody>().useGravity = false;
+            pin.Raise(pin);
         }
     }
 
-    public void LowerPins()
+    public void Lowerpins()
     {
-
+        Debug.Log("Lowering pins");
+        foreach (Pin pin in GameObject.FindObjectsOfType<Pin>())
+        {
+            pin.Lower(pin);
+        }
     }
 
     public void RenewPins()
