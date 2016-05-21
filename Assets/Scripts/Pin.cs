@@ -13,10 +13,10 @@ public class Pin : MonoBehaviour {
 	void Update () {
         Vector3 rotationInEuler = transform.rotation.eulerAngles;
 
-        float tiltInX = Mathf.Abs(rotationInEuler.x-270);
-        float tiltInZ = Mathf.Abs(rotationInEuler.z-120);
+        //float tiltInX = Mathf.Abs(rotationInEuler.x-270);
+        //float tiltInZ = Mathf.Abs(rotationInEuler.z-120);
 
-        Debug.Log(name + " " + tiltInX + " " + tiltInZ);
+        //Debug.Log(name + " " + tiltInX + " " + tiltInZ);
     }
 
     public bool IsStanding()

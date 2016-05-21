@@ -4,11 +4,11 @@ using UnityEngine.UI;
 
 public class PinSetter : MonoBehaviour {
 
-    public Text standingDisplay;
     public int lastStandingCount = -1;  // means nothing has fallen over yet
-
+    public Text standingDisplay;
+    public float distanceToRaise = 40f;
+    
     private Ball ball;
-
 
     private float lastChangeTime;   // when did the count number last update
     private bool ballEnteredBox = false;
@@ -95,6 +95,28 @@ public class PinSetter : MonoBehaviour {
         }
     }
 
+    public void RaisePins()
+    {
+        Debug.Log("Raise  Pins");
 
+        foreach (Pin pin in GameObject.FindObjectsOfType<Pin>())
+        {
+            if (pin.IsStanding())
+            {
+                Debug.Log("Identified pin to raise");
+                pin.transform.Translate(new Vector3(0, 0, distanceToRaise));
+            }
+        }
+    }
+
+    public void LowerPins()
+    {
+
+    }
+
+    public void RenewPins()
+    {
+        Debug.Log("Make New Pins");
+    }
 
 }
