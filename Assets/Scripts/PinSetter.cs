@@ -6,6 +6,7 @@ public class PinSetter : MonoBehaviour {
 
     public int lastStandingCount = -1;  // means nothing has fallen over yet
     public Text standingDisplay;
+    public GameObject pinSet;
 
     
     private Ball ball;
@@ -117,6 +118,8 @@ public class PinSetter : MonoBehaviour {
     public void RenewPins()
     {
         Debug.Log("Make New Pins");
+        GameObject newPins = Instantiate(pinSet);
+        newPins.transform.position = new Vector3(0, 35, 1829);
     }
 
 }
