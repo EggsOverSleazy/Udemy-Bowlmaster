@@ -6,25 +6,23 @@ public class Pin : MonoBehaviour {
     public float standingThreshold = 3f;
     public float distToRaise = 40f;
 
-    private Rigidbody rigidBody;
+
+
     // Use this for initialization
     void Start () {
-        rigidBody = gameObject.GetComponent<Rigidbody>();
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
         Vector3 rotationInEuler = transform.rotation.eulerAngles;
-
-        //float tiltInX = Mathf.Abs(rotationInEuler.x-270);
-        //float tiltInZ = Mathf.Abs(rotationInEuler.z-120);
-
         //Debug.Log(name + " " + tiltInX + " " + tiltInZ);
+
     }
 
     public bool IsStanding()
     {
-        Vector3 rotationInEuler = transform.rotation.eulerAngles;
+        Vector3 rotationInEuler = transform.rotation    .eulerAngles;
 
         float tiltInX = Mathf.Abs(rotationInEuler.x-270);
         float tiltInZ = Mathf.Abs(rotationInEuler.z-120);

@@ -7,18 +7,14 @@ public class PinSetter : MonoBehaviour {
     public int lastStandingCount = -1;  // means nothing has fallen over yet
     public Text standingDisplay;
     public GameObject pinSet;
-
     
     private Ball ball;
-
     private float lastChangeTime;   // when did the count number last update
     private bool ballEnteredBox = false;
-
 
     // Use this for initialization
     void Start () {
         ball = GameObject.FindObjectOfType<Ball>();
-
 	}
 	
 	// Update is called once per frame
@@ -26,11 +22,11 @@ public class PinSetter : MonoBehaviour {
         standingDisplay.text = CountStanding().ToString();
         if (ballEnteredBox == true)
         {
-            CheckStanding();
+            UpdateStandingCountAndSettle();
         }
     }
 
-    void CheckStanding()
+    void UpdateStandingCountAndSettle()
     {
         int currentStanding = CountStanding();
         if (lastStandingCount != currentStanding)
@@ -53,13 +49,11 @@ public class PinSetter : MonoBehaviour {
 
     void PinsHaveSettled()
     {
-        //aball
         lastStandingCount = -1; //indicates pins have settled and ball not back in box.  new bowling frame
         ballEnteredBox = false;
         standingDisplay.color = Color.green;
         ball.Reset();
     }
-
 
     int CountStanding()
     {
@@ -84,16 +78,6 @@ public class PinSetter : MonoBehaviour {
             ballEnteredBox = true;
             standingDisplay.color = Color.red;
         }
-
-    }
-
-     void  OnTriggerExit(Collider collider)
-    {
-        GameObject thingLeft = collider.gameObject;
-        if (thingLeft.GetComponent<Pin>())
-        {
-            Destroy(thingLeft);
-        }
     }
 
     public void RaisePins()
@@ -114,12 +98,10 @@ public class PinSetter : MonoBehaviour {
             pin.Lower(pin);
         }
     }
-
     public void RenewPins()
     {
         Debug.Log("Make New Pins");
         GameObject newPins = Instantiate(pinSet);
         newPins.transform.position = new Vector3(0, 35, 1829);
     }
-
 }

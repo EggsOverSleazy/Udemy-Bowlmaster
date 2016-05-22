@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour {
     public Vector3 launchVelocity = new Vector3 (0,0,300f);
     public GameObject pins;
     public bool inPlay = false;
+
     private Vector3 ballStartPosition;
     private Vector3 stillVelocity = new Vector3(0, 0, 0);
 

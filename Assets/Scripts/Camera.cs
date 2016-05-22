@@ -4,6 +4,7 @@ using System.Collections;
 public class Camera : MonoBehaviour {
 
     public Ball ball;
+
     private Vector3 offset;
  
 	// Use this for initialization
@@ -12,8 +13,9 @@ public class Camera : MonoBehaviour {
         offset = gameObject.transform.position - ball.transform.position;
     }
 	
-	// Update is called once per frame
+
 	void Update () {
+        // Keep camera behind the ball.  
         if(ball.transform.position.z <= 1829f-200f)
         {
             SetCamera();
