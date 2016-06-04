@@ -20,7 +20,7 @@ public class DragLaunch : MonoBehaviour
         // auto launch for debugging purposes
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            ball.Launch(new Vector3(0, 0, 1500f));
+            ball.Launch(new Vector3(0, 0, 1200f));
             //TODO: Randomize the launch vector
         }
     }

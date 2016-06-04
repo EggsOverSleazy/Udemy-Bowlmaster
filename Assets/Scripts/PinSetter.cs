@@ -11,10 +11,14 @@ public class PinSetter : MonoBehaviour {
     private Ball ball;
     private float lastChangeTime;   // when did the count number last update
     private bool ballEnteredBox = false;
+    private int lastSettleCount = 10;
+    private ActionMaster actionMaster = new ActionMaster();
+    private Animator animator;
 
     // Use this for initialization
     void Start () {
         ball = GameObject.FindObjectOfType<Ball>();
+        animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
@@ -49,6 +53,33 @@ public class PinSetter : MonoBehaviour {
 
     void PinsHaveSettled()
     {
+        int standing = CountStanding();
+        int pinFall = lastSettleCount - standing;
+        lastSettleCount = standing;
+
+        ActionMaster.Action action = actionMaster.Bowl(pinFall);
+        Debug.Log(action);
+
+        if (action == ActionMaster.Action.Tidy)     // if its time to tidy, make the tidy animation go 
+        {
+            animator.SetTrigger("tidyTrigger");
+        } else if (action == ActionMaster.Action.EndTurn)
+        {
+            animator.SetTrigger("resetTrigger");
+            lastSettleCount = 10;
+        }
+        else if (action == ActionMaster.Action.Reset)
+        {
+            animator.SetTrigger("resetTrigger");
+            lastSettleCount = 10;
+        }
+        else if (action == ActionMaster.Action.EndGame)
+        {
+            throw new UnityException("Don't know how to handle end game yet");
+        }
+
+
+
         lastStandingCount = -1; //indicates pins have settled and ball not back in box.  new bowling frame
         ballEnteredBox = false;
         standingDisplay.color = Color.green;
