@@ -3,17 +3,20 @@ using System.Collections;
 using UnityEngine.UI;
 
 public class PinSetter : MonoBehaviour {
-
-    public int lastStandingCount = -1;  // means nothing has fallen over yet
     public Text standingDisplay;
     public GameObject pinSet;
-    
-    private Ball ball;
+
+    private int lastStandingCount = -1;  // means nothing has fallen over yet
+    private bool ballOutOfPlay = false;
+
     private float lastChangeTime;   // when did the count number last update
-    private bool ballEnteredBox = false;
     private int lastSettleCount = 10;
-    private ActionMaster actionMaster = new ActionMaster();
+
+
+    private Ball ball;
     private Animator animator;
+
+    ActionMaster actionMaster = new ActionMaster();  // need it here because we only want to have one instance  
 
     // Use this for initialization
     void Start () {
@@ -24,9 +27,10 @@ public class PinSetter : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         standingDisplay.text = CountStanding().ToString();
-        if (ballEnteredBox == true)
+        if (ballOutOfPlay == true)
         {
             UpdateStandingCountAndSettle();
+            standingDisplay.color = Color.red;
         }
     }
 
@@ -51,8 +55,14 @@ public class PinSetter : MonoBehaviour {
         // call pins have settled when they have
     }
 
+    public void SetBallOutOfPlay()
+    {
+        ballOutOfPlay = true;
+    }
+
     void PinsHaveSettled()
     {
+          
         int standing = CountStanding();
         int pinFall = lastSettleCount - standing;
         lastSettleCount = standing;
@@ -77,11 +87,9 @@ public class PinSetter : MonoBehaviour {
         {
             throw new UnityException("Don't know how to handle end game yet");
         }
-
-
-
+        
         lastStandingCount = -1; //indicates pins have settled and ball not back in box.  new bowling frame
-        ballEnteredBox = false;
+        ballOutOfPlay = false;
         standingDisplay.color = Color.green;
         ball.Reset();
     }
@@ -97,18 +105,6 @@ public class PinSetter : MonoBehaviour {
             }
         }
         return standing;
-    }
-
-    void OnTriggerEnter(Collider collider)
-    {
-        GameObject thingHit = collider.gameObject;
-
-        // Ball enters play box
-        if (thingHit.GetComponent<Ball>())
-        {
-            ballEnteredBox = true;
-            standingDisplay.color = Color.red;
-        }
     }
 
     public void RaisePins()
