@@ -37,6 +37,7 @@ public class Ball : MonoBehaviour {
         gameObject.GetComponent<Rigidbody>().angularVelocity = stillVelocity;
         GetComponent<Rigidbody>().useGravity = false;
         gameObject.transform.position = ballStartPosition;
+        gameObject.transform.rotation = Quaternion.Euler(0, 0, 0);
 
     }
 

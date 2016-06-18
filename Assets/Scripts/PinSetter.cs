@@ -114,6 +114,7 @@ public class PinSetter : MonoBehaviour {
         {
             //pin.GetComponent<Rigidbody>().useGravity = false;
             pin.Raise(pin);
+            pin.transform.rotation = Quaternion.Euler(270f, 0, 0);
         }
     }
 

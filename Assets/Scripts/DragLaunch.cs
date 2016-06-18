@@ -27,25 +27,34 @@ public class DragLaunch : MonoBehaviour
 
     public void DragStart()
     {
-        // capture time and position of drag start (mouse click)
-        dragStartPosition = Input.mousePosition;
-        dragStartTime = Time.time;
+        if (ball.inPlay == false)
+        {
+            // capture time and position of drag start (mouse click)
+            dragStartPosition = Input.mousePosition;
+            dragStartTime = Time.time;
+        }
     }
 
     public void DragEnd()
     {
-        // launch the ball based on the drag 
-        dragEndPosition = Input.mousePosition;
-        dragEndTime = Time.time;
+        if (ball.inPlay == false)
+        {
+            // launch the ball based on the drag 
+            dragEndPosition = Input.mousePosition;
+            dragEndTime = Time.time;
 
-        float dragDuration = dragEndTime - dragStartTime;
-        // FYI.  Physics Formula.  Velocity = Displacement / Time Taken 
-        float launchSpeedX = (dragEndPosition.x - dragStartPosition.x) / dragDuration;
-        float launchSpeedZ = (dragEndPosition.y - dragStartPosition.y) / dragDuration;
-        //Y on the touch interface = Z in the world
+            float dragDuration = dragEndTime - dragStartTime;
+            // FYI.  Physics Formula.  Velocity = Displacement / Time Taken 
+            float launchSpeedX = (dragEndPosition.x - dragStartPosition.x) / dragDuration;
+            float launchSpeedZ = (dragEndPosition.y - dragStartPosition.y) / dragDuration;
+            //Y on the touch interface = Z in the world
 
-        // launch
-        ball.Launch(new Vector3(launchSpeedX, 0, launchSpeedZ));
+            // launch
+
+            ball.Launch(new Vector3(launchSpeedX, 0, launchSpeedZ));
+
+        }
+
 
     }
 
